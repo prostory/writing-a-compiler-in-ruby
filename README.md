@@ -1,8 +1,4 @@
-Writing a compiler in Ruby, bottom up
+# 使用Ruby自底向上的编写一个编译器
 
-(To follow my compiler related posts, either subscribe to my main RSS feed, or the compiler specific one )
-
-Back in March 2008 I started publishing a series on how to write a compiler in Ruby, bottom up, that is, starting with the code generator and working my way up instead of the more traditional approach of writing the parser first. Here are the parts I've published on my blog so far.
-
-(The bits labeled "interlude" are sort-of related articles in that the cover issues with writing/developing compilers, or issues related to compilation, but are not directly tied into the actual article series)
+早在2008年3月，我开始发布一系列关于如何使用Ruby编写一个编译器的文章。使用自底向上的方法，也就是，以代码生成器开始和我的工作方式来替代先编写一个解析器的更传统的方法。这里是到目前为止我在我的博客上发布的所有部分。
 
