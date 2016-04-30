@@ -1,7 +1,7 @@
-# Summary
+#使用Ruby自底向上的编写一个编译器
 
-This is the summary of my book.
+早在2008年3月，我开始发布一系列关于如何使用Ruby编写一个编译器的文章。使用自底向上的方法，也就是，以代码生成器开始和我的工作方式来替代先编写一个解析器的更传统的方法。这里是到目前为止我在我的博客上发布的所有部分。
 
 * [为main函数创建一个简单的prolog / epilog](section1/README.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
+* [函数调用 / Hello World](section2/README.md)
+* [链接表达式；添加子表达式](section3/README.md)
