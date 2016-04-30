@@ -9,6 +9,7 @@
 * [第2步](section2/README.md) 函数调用 / Hello World
 * [第3步](section3/README.md) 链接表达式；添加子表达式
 * [第4步](section4/README.md) 定义函数；添加运行时支持
+* [第5步](section5/README.md) 数字字面量；if .. then .. else
 
 [原文]:http://hokstad.com/compiler
 
