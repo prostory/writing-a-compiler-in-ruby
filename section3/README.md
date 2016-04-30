@@ -18,15 +18,15 @@
           return
         end
 ```
-Recursion will play a great role here - you're descending a tree structure after all, so the core method to compile an expression will be called on deeper and deeper nodes as well, especially to handle proper sub-expressions, which is our next goal.
+在这里递归将发生巨大的作用——最后为一个下降的树结构，所以编译表达式的核心方法也会被越来越深得节点调用，尤其是处理完全的子表达式，这是我们的下一个目标。
 
-Adding sub-expressions, take 1
-
-Here's the test we'd like to make work:
+这里的测试我们想要使它工作：
 ```ruby
     prog = [:printf,"'hello world' takes %ld bytes\\n",[:strlen, "hello world"]],
 ```
-Here's the first change. In #get_arg, we add this at the start:
+######添加自表达式，第一版
+
+这里是第一个变更。在#get_arg中，我们在函数的开头处添加：
 ```ruby
         # Handle strings or subexpressions
         if a.is_a?(Array)
@@ -34,17 +34,17 @@ Here's the first change. In #get_arg, we add this at the start:
           return nil # What should we return?
         end
 ```
-If you try to make the code above compile the test, you'll get an error from gcc, because we expect get_arg to return a sequence number for the string constants and nothing else, but that clearly doesn't work for sub expressions.
+如果你尝试去用上面的代码来编译那个测试，你将会从gcc中得到错误提示，因为我们期望get_arg返回为字符串常量返回一个数字序列而不是空，但这样的子表达式显然无法工作。
 
-Adding sub-expressions, take 2: Return values
-
-So how does GCC handle this. Getting the assembly for this:
-
+######添加自表达式，第二版：返回值
+GCC是如何处理的，我们获取下面代码汇编代码：
+```cpp
 int main()
 {
   printf("'Hello world' takes %ld bytes\n",foo("Hello world"));
 }
-... results in this (just the relevant part of main):
+```
+... 这段代码编译的结果（仅仅贴出main相关的部分）：
 ```cpp
         subl    $20, %esp
         movl    $.LC0, (%esp)
@@ -54,9 +54,9 @@ int main()
         call    printf
         addl    $20, %esp
 ```
-... which shows that it's pretty straightforward. Gcc first calls the sub expression (foo), and then expects the return value of a function to be in the register "%eax", and so that needs to be copied onto the stack instead of the address of a string constant.
+...这表明它很简单。gcc首先调用子表达式（foo），然后期望函数的返回值在寄存器"%eax"中。因此，需要被拷贝到堆栈上而不是字符串常量的地址。
 
-First up let's fix #get_arg:
+首先，让我们修复#get_arg:
 ```ruby
       def get_arg(a)
         # Handle strings or subexpressions
@@ -70,16 +70,16 @@ First up let's fix #get_arg:
         @seq += 1
         @string_constants[a] = seq
         return [:strconst,seq]
-      end 
+      end
 ```
-The only changes are the "return" expressions, where we indicate what is returned - this will expand considerably later.
+唯一的变更就是"return"表达式，用来指示我们返回什么——这个将在以后进行扩展。
 
-The remaining change is pretty much a rewrite of the rest of compile_exp. Instead of just collecting the results of get_arg, we iterate over it and output directly (which is why the stack adjustment's also change, since the "args" array has gone away):
+其余的变更是几乎重写了compile_exp的剩余部分。我们遍历get_arg的结果并直接输出，而不是仅仅收集它。（这就是为什么堆栈校正也要修改，因为"arg"数组已经去除了）：
 ```ruby
         stack_adjustment = PTR_SIZE + (((exp.length-1+0.5)*PTR_SIZE/(4.0*PTR_SIZE)).round) * (4*PTR_SIZE)
-    
+
         puts "\tsubl\t$#{stack_adjustment}, %esp" if exp[0] != :do
-        exp[1..-1].each_with_index do |a,i| 
+        exp[1..-1].each_with_index do |a,i|
           atype, aparam = get_arg(a)
           if exp[0] != :do
             if atype == :strconst
@@ -91,28 +91,29 @@ The remaining change is pretty much a rewrite of the rest of compile_exp. Instea
           end
         end
 ```
-As you can see the change isn't that complex. We just check the return value from #get_arg and pick a string constant or %eax depending. This part will expand considerably as we add more different types of things that can be returned.
+正如你所看到的更改并不是那么复杂。我们仅仅只是检查从#get_arg返回的值并取出一个字符串常量或根据%eax而定。这部分将会大幅度的扩展随着我们添加更多我们可以返回的不同的类型的值。
 
-You can find the latest version here
+你可以在[这里]找到最新的代码。
 
-###Upcoming parts
+###即将到来的部分
+这些仅仅是几乎已经预写的部分。我预期一旦我需要去开始赶写新的部分时，重点将放在一个简单的解析器，来使编译器可以尽快实现自举（即可以编译它自己）。
 
-These are the almost ready pre-written parts only. I expect once I need to start catching up on new parts the focus will be on a simple parser with the goal of making the compiler self-hosted (i.e. able to compile itself) as quickly as possible.
+* 第4步：介绍运行时，定义函数
+* 第5步：处理字符串以外的字面量
+* 第6步：If ... then ... else
+* 第7步：循环结构
+* 第8步：匿名函数（lambda）
+* 第9步：用匿名函数重访循环，访问函数参数
+* 第10步：添加赋值和简单的算术操作
+* 第11步：一个干净的"while"循环
+* 第12步：测试语言：编写一个简单的文本识别程序来使输入更整洁
+* 第13步：重构代码生成器并开始抽象出目标结构
+* 第14步：各种概念和未来发展方向的讨论
+* 第15步：添加数组
+* 第16步：本地变量和多个作用域
+* 第17步：访问可变长参数
+* 第18步：重访文本识别器——清理测试新功能，并运行它自己
+* 第19步：确定编译器自举所需要的结构
+* 第20步：开始一个完整的解析器
 
->Step 4: Introducing a runtime, and defining functions
->Step 5: Handle literals other than strings
->Step 6: If ... then ... else
->Step 7: Looping constructs
->Step 8: Anonymous functions (lambda)
->Step 9: Revisiting loops with anonymous functions, accessing >function arguments
->Step 10: Adding assignment and basic arithmetic
->Step 11: A cleaner "while" loop
->Step 12: Testing the language: Writing a simple text mangling >program to make input cleaner
->Step 13: Refactoring the code generation and starting to >abstract out the target architecture
->Step 14: Discussion of various concepts and future direction
->Step 15: Adding arrays
->Step 16: Local variables and multiple scopes
->Step 17: Accessing variable length arguments
->Step 18: Revisiting the text mangler - cleanups to test new >functionality, and run it on itself
->Step 19: Identifying the constructs needed to self host the compiler
->Step 20: A start on a proper parser
+[这里]:http://hokstad.com/static/compiler/step3.rb
