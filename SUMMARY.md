@@ -21,3 +21,4 @@
 * [扩展语法分析器](section16/README.md)
 * [推断"let"表达式](section17/README.md)
 * [Ruby的对象模型](interlude2/README.md)
+* [对象模型](section19/README.md) 
