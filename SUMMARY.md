@@ -20,6 +20,7 @@
 * [真正的语法分析器](section15/README.md)
 * [扩展语法分析器](section16/README.md)
 * [推断"let"表达式](section17/README.md)
-* [插入运算符优先级分析器](section18/README.md) 
+* [插入运算符优先级分析器](section18/README.md)
 * [Ruby的对象模型](interlude2/README.md)
 * [对象模型](section19/README.md)
+* [Ruby的编译问题](interlude3/README.md)
