@@ -37,3 +37,4 @@
 * [第26步](section26/README.md) 尝试在STABS支持（debugging/gdb）
 * [第27步](section27/README.md) 解析；开始删除'runtime.c'
 * [第28步](section28/README.md) 将数字转换成Numbers
+* [第29步](section29/README.md) 在我们新的Fixnum上操作
