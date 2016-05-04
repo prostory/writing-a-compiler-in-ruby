@@ -11,3 +11,4 @@
 * [第4步](section4/README.md) 定义函数；添加运行时支持
 * [第5步](section5/README.md) 数字字面量；if .. then .. else
 * [第6步](section5/README.md) 匿名函数: lamba / call
+* [第7步](section7/README.md) 使用lambda/call和函数参数
