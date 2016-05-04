@@ -14,3 +14,4 @@
 * [第7步](section7/README.md) 使用lambda/call和函数参数
 * [第8步](section8/README.md) 赋值，算法和比较
 * [第9步](section9/README.md) 一个内建的"while"语句
+* [第10步](section10/README.md) 测试编译器：原始的”解析器“
