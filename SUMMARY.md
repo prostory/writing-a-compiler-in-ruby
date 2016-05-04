@@ -26,3 +26,4 @@
 * [Ruby的编译问题](interlude3/README.md)
 * [调度场解析组件的详细攻略](section20/README.md)
 * [对符号类的基本支持；开始工作在attr_reader / attr_writer / attr_accessor上](section21/README.md)
+* [转移到method_missing](section22/README.md) 
