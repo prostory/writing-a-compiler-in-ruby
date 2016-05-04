@@ -32,3 +32,4 @@
 * [外部作用域：清理并增加“main”对象](section24/README.md)
 * [通过闭包实现define_method](section25/README.md)
 * [尝试在STABS支持（debugging/gdb）](section26/README.md)
+* [解析；开始删除'runtime.c'](section27/README.md)
