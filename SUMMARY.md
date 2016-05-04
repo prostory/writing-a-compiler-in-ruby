@@ -34,4 +34,5 @@
 * [尝试在STABS支持（debugging/gdb）](section26/README.md)
 * [解析；开始删除'runtime.c'](section27/README.md)
 * [将数字转换成Numbers](section28/README.md)
-* [在我们新的Fixnum上操作](section29/README.md) 
+* [在我们新的Fixnum上操作](section29/README.md)
+* [比较操作符](section30/README.md) 

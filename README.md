@@ -38,3 +38,4 @@
 * [第27步](section27/README.md) 解析；开始删除'runtime.c'
 * [第28步](section28/README.md) 将数字转换成Numbers
 * [第29步](section29/README.md) 在我们新的Fixnum上操作
+* [第30步](section30/README.md) 比较操作符
