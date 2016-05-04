@@ -18,4 +18,5 @@
 * [本地变量](section13/README.md)
 * [变长参数](section14/README.md)
 * [真正的语法分析器](section15/README.md)
-* [扩展语法分析器](section16/README.md) 
+* [扩展语法分析器](section16/README.md)
+* [推断"let"表达式](section17/README.md)
