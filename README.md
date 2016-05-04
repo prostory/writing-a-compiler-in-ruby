@@ -27,3 +27,4 @@
 * [插曲](interlude2/README.md) Ruby的对象模型
 * [第19步](section19/README.md) 对象模型
 * [插曲](interlude3/README.md) Ruby的编译问题
+* [第20步](section20/README.md) 调度场解析组件的详细攻略

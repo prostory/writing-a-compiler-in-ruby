@@ -24,3 +24,4 @@
 * [Ruby的对象模型](interlude2/README.md)
 * [对象模型](section19/README.md)
 * [Ruby的编译问题](interlude3/README.md)
+* [调度场解析组件的详细攻略](section20/README.md)
