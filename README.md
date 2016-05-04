@@ -33,3 +33,4 @@
 * [第23步](section23/README.md) 真正的字符串：将字符串转换为对象
 * [插曲](interlude4/README.md) 怎样实现闭包
 * [第24步](section24/README.md) 外部作用域：清理并增加“main”对象
+* [第25步](section25/README.md) 通过闭包实现define_method
