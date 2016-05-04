@@ -7,3 +7,4 @@
 * [链接表达式；添加子表达式](section3/README.md)
 * [定义函数；添加运行时支持](section4/README.md)
 * [数字字面量；if .. then .. else](section5/README.md)
+* [匿名函数：lambda/call](section6/README.md)
