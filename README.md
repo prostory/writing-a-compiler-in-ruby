@@ -31,3 +31,4 @@
 * [第21步](section21/README.md) 对符号类的基本支持；开始工作在attr_reader / attr_writer / attr_accessor上
 * [第22步](section22/README.md) 转移到method_missing
 * [第23步](section23/README.md) 真正的字符串：将字符串转换为对象
+* [插曲](interlude4/README.md) 怎样实现闭包
