@@ -23,5 +23,6 @@
 * [第15步](section15/README.md) 真正的语法分析器
 * [第16步](section16/README.md) 扩展语法分析器
 * [第17步](section17/README.md) 推断"let"表达式
+* [第18步](section18/README.md) 插入运算符优先级分析器
 * [插曲](interlude2/README.md) Ruby的对象模型
 * [第19步](section19/README.md) 对象模型
